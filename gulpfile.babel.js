@@ -1,6 +1,7 @@
 const { series, parallel, src, dest, watch } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
 sass.compiler = require("node-sass");
+const babel = require('gulp-babel');
 const cssnano = require("gulp-cssnano");
 const autoprefixer = require("gulp-autoprefixer");
 const rename = require("gulp-rename");
@@ -26,6 +27,7 @@ const paths = {
 function javaScript(cb) {
   src(paths.js)
     .pipe(sourcemaps.init())
+    .pipe(babel({ presets: ['@babel/env'] }))
     .pipe(uglify())
     .pipe(
       rename({

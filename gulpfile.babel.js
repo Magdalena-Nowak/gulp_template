@@ -61,7 +61,7 @@ function minify(cb) {
 }
 
 function handleKits(done) {
-  src(paths.html).pipe(kit()).pipe(dest("./"));
+  src(paths.html).pipe(kit()).pipe(dest("./dist"));
   done();
 }
 
@@ -74,7 +74,7 @@ function cleanStuff(done) {
 function startBrowserSync(done) {
   browserSync.init({
     server: {
-      baseDir: "./",
+      baseDir: "./dist",
     },
   });
   done();
